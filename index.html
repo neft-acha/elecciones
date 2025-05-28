@@ -98,25 +98,16 @@
                         <label for="departamento" class="form-label">Departamento</label>
                         <select class="form-select" id="departamento" required>
                             <option value="" selected disabled>Seleccione un departamento</option>
-                            <option value="Artigas">Artigas</option>
-                            <option value="Canelones">Canelones</option>
-                            <option value="Cerro Largo">Cerro Largo</option>
-                            <option value="Colonia">Colonia</option>
-                            <option value="Durazno">Durazno</option>
-                            <option value="Flores">Flores</option>
-                            <option value="Florida">Florida</option>
-                            <option value="Lavalleja">Lavalleja</option>
-                            <option value="Maldonado">Maldonado</option>
-                            <option value="Montevideo">Montevideo</option>
-                            <option value="Paysandú">Paysandú</option>
-                            <option value="Río Negro">Río Negro</option>
-                            <option value="Rivera">Rivera</option>
-                            <option value="Rocha">Rocha</option>
-                            <option value="Salto">Salto</option>
-                            <option value="San José">San José</option>
-                            <option value="Soriano">Soriano</option>
-                            <option value="Tacuarembó">Tacuarembó</option>
-                            <option value="Treinta y Tres">Treinta y Tres</option>
+                            <option value="La Paz">La Paz</option>
+                            <option value="Cochabamba">Cochabamba</option>
+                            <option value="Santa Cruz">Santa Cruz</option>
+                            <option value="Tarija">Tarija</option>
+                            <option value="Potosí">Potosí</option>
+                            <option value="Oruro">Oruro</option>
+                            <option value="Beni">Beni</option>
+                            <option value="Pando">Pando</option>
+                            <option value="Chuquisaca">Chuquisaca</option>
+                            <option value="El Beni">El Beni</option>
                         </select>
                     </div>
                     <div class="mb-3">
@@ -126,6 +117,10 @@
                     <div class="mb-3">
                         <label for="votacion" class="form-label">Fecha de Votación</label>
                         <input type="date" class="form-control" id="votacion" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contraseña" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="contraseña" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Registrarse</button>
                 </form>
@@ -140,8 +135,8 @@
                         <input type="text" class="form-control" id="login-ci" required>
                     </div>
                     <div class="mb-3">
-                        <label for="login-nacimiento" class="form-label">Fecha de Nacimiento</label>
-                        <input type="date" class="form-control" id="login-nacimiento" required>
+                        <label for="login-contraseña" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="login-contraseña" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Ingresar</button>
                     <button type="button" class="btn btn-link" id="forgot-password">Olvidé mi contraseña</button>
@@ -233,6 +228,7 @@
                     departamento: document.getElementById('departamento').value,
                     nacimiento: document.getElementById('nacimiento').value,
                     votacion: document.getElementById('votacion').value,
+                    contraseña: document.getElementById('contraseña').value,
                     hasVoted: false
                 };
                 
@@ -253,9 +249,9 @@
                 e.preventDefault();
                 
                 const ci = document.getElementById('login-ci').value;
-                const nacimiento = document.getElementById('login-nacimiento').value;
+                const contraseña = document.getElementById('login-contraseña').value;
                 
-                const voter = voters.find(v => v.ci === ci && v.nacimiento === nacimiento);
+                const voter = voters.find(v => v.ci === ci && v.contraseña === contraseña);
                 
                 if (voter) {
                     if (voter.hasVoted) {
@@ -268,7 +264,7 @@
                         showCandidates();
                     }
                 } else {
-                    alert('CI o fecha de nacimiento incorrectos');
+                    alert('CI o contraseña incorrectos');
                 }
             });
             
